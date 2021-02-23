@@ -1,12 +1,21 @@
 import React from 'react'
 import { Form, Button, Input, Space, Divider, message } from 'antd'
 import { LoginFormSubmitValue } from '../../types/domains/Login'
+import { requestAuthLogin } from '../../hooks/auth'
 
 const DomainsLogin: React.FC = () => {
     const [formLogin] = Form.useForm()
     const handleSubmitForm = async (values: LoginFormSubmitValue) => {
-        console.log(values.username)
-        console.log(values.password)
+        try {
+            const { username, password } = values
+            const data = await requestAuthLogin(username,password)
+            console.log(data)
+            message.success('Login Successful')
+        } catch(error) {
+            console.error(error)
+            const code = error.code ?? ''
+            message.error(`${error.message} ${code ? ` (${code})` : ''}`)
+        }
     }
     return (
         <Form 
