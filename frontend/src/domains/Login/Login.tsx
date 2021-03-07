@@ -1,10 +1,12 @@
 import React, { useContext } from 'react'
 import { Form, Button, Input, Space, Divider, message } from 'antd'
+import { useHistory } from 'react-router-dom'
 import { LoginFormSubmitValue } from '../../types/domains/Login'
 import { requestAuthLogin } from '../../hooks/auth'
 import UserContext from '../../contexts/UserContext'
 
 const DomainsLogin: React.FC = () => {
+    const history = useHistory()
     const { setIsLoggedIn, setAccessToken, setUser } = useContext(UserContext)
     const [formLogin] = Form.useForm()
     const handleSubmitForm = async (values: LoginFormSubmitValue) => {
@@ -15,6 +17,7 @@ const DomainsLogin: React.FC = () => {
             setUser(data)
             setIsLoggedIn(true)
             message.success('Login Successful')
+            return history.push('/user/me')
         } catch(error) {
             setAccessToken('')
             setUser({})

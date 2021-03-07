@@ -22,6 +22,20 @@ export const requestAuthLogin = async (username: string, password: string): Prom
     return data
 }
 
+export const requestRefreshToken = async (token: string): Promise<LoginResponse> => {
+    const data: LoginResponse = await axios.post(
+        'http://localhost:4000/refresh-token', {}, {
+            headers: {
+                Authorization: `Bearer ${token}`
+            }
+        }
+    ).then(response => response.data)
+    .catch(error => handleResponseError(error))
+
+    return data
+}
+
 export default {
-    requestAuthLogin
+    requestAuthLogin,
+    requestRefreshToken
 }
