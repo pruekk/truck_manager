@@ -1,18 +1,24 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { Form, Button, Input, Space, Divider, message } from 'antd'
 import { LoginFormSubmitValue } from '../../types/domains/Login'
 import { requestAuthLogin } from '../../hooks/auth'
+import UserContext from '../../contexts/UserContext'
 
 const DomainsLogin: React.FC = () => {
+    const { setIsLoggedIn, setAccessToken, setUser } = useContext(UserContext)
     const [formLogin] = Form.useForm()
     const handleSubmitForm = async (values: LoginFormSubmitValue) => {
         try {
             const { username, password } = values
             const data = await requestAuthLogin(username,password)
-            console.log(data)
+            setAccessToken(data.accessToken)
+            setUser(data)
+            setIsLoggedIn(true)
             message.success('Login Successful')
         } catch(error) {
-            console.error(error)
+            setAccessToken('')
+            setUser({})
+            setIsLoggedIn(false)
             const code = error.code ?? ''
             message.error(`${error.message} ${code ? ` (${code})` : ''}`)
         }

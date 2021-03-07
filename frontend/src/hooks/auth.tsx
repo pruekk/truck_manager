@@ -1,6 +1,6 @@
 import axios from 'axios'
 
-import { LoginFormSubmitValue } from '../types/domains/Login'
+import { LoginResponse } from '../types/hooks/auth'
 
 const handleResponseError = (error:any) => {
     if (error?.response?.data?.error){
@@ -9,8 +9,8 @@ const handleResponseError = (error:any) => {
     throw error
 }
 
-export const requestAuthLogin = async (username: string, password: string): Promise<LoginFormSubmitValue> => {
-    const data: LoginFormSubmitValue = await axios.post(
+export const requestAuthLogin = async (username: string, password: string): Promise<LoginResponse> => {
+    const data: LoginResponse = await axios.post(
         'http://localhost:4000/auth/login',
         {
             username,
