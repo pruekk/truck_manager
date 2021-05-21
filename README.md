@@ -104,10 +104,22 @@ Major frameworks using in this project.
 
 <!-- ROADMAP -->
 ## Roadmap
-
-Overview
-- Overall design
-- Demo to customer
+- Overall design (Figma)
+- Demo to customer #1 (Figma)
+- Develop UX-UI / Mock Frontend (React, AntDesign, MirageJS)
+- Deploy to netlify
+- Demo to customer #2
+- Develop API
+  - Authentication
+  - Add
+  - Edit / Edit Range
+  - Delete / Delete Range
+- Develop Backend (Go or NodeJS)
+- Integrate with cloud storage (Firebase or AWS) 
+- Hosting
+- Demo to customer #3
+- Adjust
+- Demo to customer #4
 
 Module
 - Authentication
