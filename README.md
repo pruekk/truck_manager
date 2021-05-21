@@ -40,6 +40,11 @@ Major frameworks using in this project.
 * [React](https://reactjs.org/)
 * [Ant Design](https://ant.design/) - Design system
 * [Miragejs](https://miragejs.com/) - API mocking library
+* [Test](https://www.guru99.com/web-application-testing.html#:~:text=WEB%20TESTING%2C%20or%20website%20testing,the%20web%20application%20or%20website.) 
+  * Static 
+  * Unit - [Jest](https://testing-library.com/docs/react-testing-library/example-intro/)
+  * Integration 
+  * End to End
 
 [comment]: <> (<!-- GETTING STARTED -->)
 
